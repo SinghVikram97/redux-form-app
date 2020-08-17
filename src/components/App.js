@@ -5,7 +5,7 @@ import InputComponent from "./InputComponent";
 function App(props) {
   // console.log(props); // many functions and values
   // handleSubmit also in props
-  const { handleSubmit } = props;
+  const { handleSubmit, valid } = props;
   // console.log(String(handleSubmit));
   const [showProfile, setShowProfile] = useState(false);
   return (
@@ -23,7 +23,9 @@ function App(props) {
         <label>Last Name: </label>
         <Field type="text" name="lastName" component={InputComponent} />
         <br />
-        <button type="submit">Submit it</button>
+        <button type="submit" disabled={!valid}>
+          Submit it
+        </button>
         <br />
       </form>
       {showProfile && <Profile />}
@@ -31,7 +33,20 @@ function App(props) {
   );
 }
 
+const validate = formValues => {
+  const errors = {};
+  if (!formValues.firstName) {
+    errors.firstName = "Please provide your first name";
+  }
+  if (!formValues.lastName) {
+    errors.lastName = "Please provide your last name";
+  }
+
+  return errors;
+};
+
 // reduxForm similar to connect
 export default reduxForm({
-  form: "myForm" // unique name
+  form: "myForm", // unique name
+  validate
 })(App);
