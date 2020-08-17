@@ -12,7 +12,7 @@ h1 {
   font-size: 220%;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-input[type="text"] {
+input {
   margin-top: 2%;
   padding: 3px;
   display: inline-block;

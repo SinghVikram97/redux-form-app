@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Field, reduxForm, formValues } from "redux-form";
 import Profile from "./Profile";
+import InputComponent from "./InputComponent";
 function App(props) {
   // console.log(props); // many functions and values
   // handleSubmit also in props
@@ -17,10 +18,10 @@ function App(props) {
         })}
       >
         <label>First Name: </label>
-        <Field type="text" name="firstName" component="input" />
+        <Field type="text" name="firstName" component={InputComponent} />
         <br />
         <label>Last Name: </label>
-        <Field type="text" name="lastName" component="input" />
+        <Field type="text" name="lastName" component={InputComponent} />
         <br />
         <button type="submit">Submit it</button>
         <br />
