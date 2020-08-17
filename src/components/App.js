@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-
-function App() {
+import { connect } from "react-redux";
+import { saveFormDetails } from "../actions/form-action";
+function App(props) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   return (
@@ -22,7 +23,9 @@ function App() {
         onChange={e => setLastName(e.target.value)}
       />
       <br />
-      <button onClick={() => console.log({ firstName, lastName })}>Save</button>
+      <button onClick={() => props.submitForm(firstName, lastName)}>
+        Save
+      </button>
       <br />
       <br />
       <p>First Name: {firstName}</p>
@@ -30,5 +33,12 @@ function App() {
     </div>
   );
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    submitForm(firstName, lastName) {
+      dispatch(saveFormDetails(firstName, lastName));
+    }
+  };
+};
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);

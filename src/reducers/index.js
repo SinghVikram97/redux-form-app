@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { SAVE_FORM } from "../actions/form-action";
 
 const intialDetails = {
   firstName: "",
@@ -6,6 +7,9 @@ const intialDetails = {
 };
 
 const formReducer = (formDetails = intialDetails, action) => {
+  if (action.type === SAVE_FORM) {
+    return action.payload;
+  }
   return formDetails;
 };
 
