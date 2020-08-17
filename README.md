@@ -8,3 +8,5 @@
 - `cd redux-form-app`
 - `npm install`
 - `npm start`
+
+### Change branch to master to see the same implemented with redux and local react state
